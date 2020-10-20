@@ -6,6 +6,9 @@ Various Metasploit modules for penetration testing
 These modules may be internally developed or obtained from third parties from
 internet resources. Credit info is maintained for third-party modules
 
+Symlink or copy into the local user metasploit config directory (e.g. ~/.msf4/) -
+Note that contents of msfconsole.rc will auto-load on start
+
 -------------------------------------------------------------------------------
 
 Matthew C. Jones, CPA, CISA, OSCP
