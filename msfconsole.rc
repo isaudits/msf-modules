@@ -5,3 +5,21 @@ alias web_delivery "resource web_delivery.rc"
 setg exitonsession false
 setg MeterpreterUserAgent "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.0; Win64; x64; Trident/4.0)"
 setg MeterpreterServerName "Microsoft-IIS/8.0"
+
+<ruby>
+
+if `[[ $(uname -s) == Linux ]]`
+    hosttype='Linux'
+    lhost_ip = `ifconfig eth0 | awk '/ *inet /{print $2}'`
+else
+    hosttype='OSX'
+    lhost_ip = `ifconfig en0 | awk '/ *inet /{print $2}'`
+end
+
+if lhost_ip != ''
+    puts "#{hosttype} IP detected: #{lhost_ip}"
+    run_single("setg LHOST #{lhost_ip}")
+    run_single("setg SRVHOST #{lhost_ip}")
+end
+
+</ruby>
